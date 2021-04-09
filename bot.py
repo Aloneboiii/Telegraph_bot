@@ -64,7 +64,7 @@ async def uploadvid(client, message):
   else:
     await message.reply_text("**Size Should Be Less Than 5 mb**")
 
-@Tgraph.on_message(filters.command(["start"]))
+@alain.on_message(filters.command(["start"]))
 async def home(client, message):
   buttons = [[
         InlineKeyboardButton('Help', callback_data='help'),
@@ -88,7 +88,7 @@ Made With ♥️ By @Alain_Champion</b>""",
         reply_to_message_id=message.message_id
     )
 
-@Tgraph.on_message(filters.command(["help"]))
+@alain.on_message(filters.command(["help"]))
 async def help(client, message):
   buttons = [[
         InlineKeyboardButton('Home', callback_data='home'),
@@ -106,7 +106,7 @@ i'll upload it to telegra.ph and give you the direct link""",
         parse_mode="html",
         reply_to_message_id=message.message_id
     )                           
-@Tgraph.on_callback_query()
+@alain.on_callback_query()
 async def button(Tgraph, update):
       cb_data = update.data
       if "help" in cb_data:
@@ -118,4 +118,4 @@ async def button(Tgraph, update):
         await update.message.delete()
         await home(Tgraph, update.message)
 
-Tgraph.run()
+alain.run()
